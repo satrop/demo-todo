@@ -1,95 +1,118 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { useTodo } from "@/context/TodoContext";
+import { FilterType } from "@/types/todo";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [newTodo, setNewTodo] = useState("");
+  const { todos, filter, theme, addTodo, toggleTodo, deleteTodo, clearCompleted, setFilter, toggleTheme, reorderTodos } = useTodo();
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newTodo.trim()) {
+      addTodo(newTodo.trim());
+      setNewTodo("");
+    }
+  };
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "active") return !todo.isCompleted;
+    if (filter === "completed") return todo.isCompleted;
+    return true;
+  });
+
+  const activeTodosCount = todos.filter((todo) => !todo.isCompleted).length;
+
+  const handleDragEnd = (result: any) => {
+    if (!result.destination) return;
+    reorderTodos(result.source.index, result.destination.index);
+  };
+
+  return (
+    <main className="container">
+      <header>
+        <h1>TODO</h1>
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          {theme === "light" ? "🌙" : "☀️"}
+        </button>
+      </header>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="todo-input"
+          placeholder="Create a new todo..."
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+      </form>
+
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="todos">
+          {(provided) => (
+            <div
+              className="todo-list"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {filteredTodos.map((todo, index) => (
+                <Draggable
+                  key={todo.id}
+                  draggableId={todo.id}
+                  index={index}
+                >
+                  {(provided) => (
+                    <div
+                      className={`todo-item ${todo.isCompleted ? "completed" : ""}`}
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <div
+                        className={`checkbox ${todo.isCompleted ? "checked" : ""}`}
+                        onClick={() => toggleTodo(todo.id)}
+                      >
+                        {todo.isCompleted && "✓"}
+                      </div>
+                      <span>{todo.text}</span>
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteTodo(todo.id)}
+                        aria-label="Delete todo"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+
+              <div className="filters">
+                <span>{activeTodosCount} items left</span>
+                <div>
+                  {(["all", "active", "completed"] as FilterType[]).map((filterType) => (
+                    <button
+                      key={filterType}
+                      className={filter === filterType ? "active" : ""}
+                      onClick={() => setFilter(filterType)}
+                    >
+                      {filterType.charAt(0).toUpperCase() + filterType.slice(1)}
+                    </button>
+                  ))}
+                </div>
+                <button onClick={clearCompleted}>Clear Completed</button>
+              </div>
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </main>
   );
 }

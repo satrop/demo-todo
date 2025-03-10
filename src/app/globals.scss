@@ -1,0 +1,145 @@
+@use "../styles/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] {
+  background-color: var(--bg-light);
+  color: var(--text-primary-light);
+
+  .todo-item {
+    background-color: var(--bg-todo-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .todo-input,
+  .todo-list {
+    background-color: var(--bg-todo-light);
+    box-shadow: var(--shadow-light);
+  }
+}
+
+[data-theme="dark"] {
+  background-color: var(--bg-dark);
+  color: var(--text-primary-dark);
+
+  .todo-item {
+    background-color: var(--bg-todo-dark);
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .todo-input,
+  .todo-list {
+    background-color: var(--bg-todo-dark);
+    box-shadow: var(--shadow-dark);
+  }
+}
+
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  margin: 2rem 0;
+  font-family: inherit;
+  font-size: inherit;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.todo-list {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+
+  &.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.checked {
+    background: var(--check-gradient);
+    border: none;
+  }
+}
+
+.delete-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  @include hover {
+    opacity: 1;
+  }
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  font-size: 0.875rem;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+
+    &.active {
+      color: var(--primary-color);
+    }
+
+    @include hover {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
