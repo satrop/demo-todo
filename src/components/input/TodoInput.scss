@@ -1,0 +1,93 @@
+form {
+  margin-bottom: 2rem;
+}
+
+.input-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: clamp(18px, 3vw, 22px);
+    height: clamp(18px, 3vw, 22px);
+    border-radius: 50%;
+    border: 1px solid var(--border-dark);
+    margin-left: clamp(0.875rem, 2vw, 1.5rem);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    border-radius: var(--b-rad);
+    transition: width var(--anim), height var(--anim), inset var(--anim);
+  }
+
+  &:focus-within {
+    &::after {
+      inset: -5px;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+    }
+  }
+}
+
+.todo-input {
+  padding: var(--input-pad);
+  border-radius: var(--b-rad);
+  transition: background-color var(--anim), color var(--anim), box-shadow var(--anim);
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  z-index: 1;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+// Theme Switch Styles
+// Dark Theme
+[data-theme="dark"] {
+  .todo-input {
+    background-color: var(--bg-todo-dark);
+    color: var(--text-primary-dark);
+    box-shadow: var(--shadow-dark);
+
+    &::placeholder {
+      color: var(--text-secondary-dark);
+      transition: color var(--anim);
+    }
+
+    &:focus {
+      &::placeholder {
+        color: transparent;
+      }
+    }
+  }
+}
+
+// Light Theme
+[data-theme="light"] {
+  .todo-input {
+    background-color: var(--bg-todo-light);
+    color: var(--text-primary-light);
+    box-shadow: var(--shadow-light);
+
+    &::placeholder {
+      color: var(--text-secondary-light);
+    }
+  }
+}
