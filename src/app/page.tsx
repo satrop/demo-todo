@@ -1,5 +1,6 @@
 "use client";
 
+import { DropResult } from "@hello-pangea/dnd";
 import { useTodo } from "@/context/TodoContext";
 import { Header } from "@/components/header/Header";
 import { TodoInput } from "@/components/input/TodoInput";
@@ -17,7 +18,7 @@ export default function Home() {
 
   const activeTodosCount = todos.filter((todo) => !todo.isCompleted).length;
 
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
     reorderTodos(result.source.index, result.destination.index);
   };

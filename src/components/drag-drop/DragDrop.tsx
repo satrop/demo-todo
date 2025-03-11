@@ -1,10 +1,10 @@
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { DragDropContext, Droppable, Draggable, DropResult } from "@hello-pangea/dnd";
 import { Todo } from "@/types/todo";
 import "./DragDrop.scss";
 
 interface DragDropProps {
   todos: Todo[];
-  onDragEnd: (result: any) => void;
+  onDragEnd: (result: DropResult) => void;
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
 }
