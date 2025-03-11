@@ -43,9 +43,7 @@ export const DragDrop = ({ todos, onDragEnd, onToggle, onDelete }: DragDropProps
                       className="delete-btn"
                       onClick={() => onDelete(todo.id)}
                       aria-label="Delete todo"
-                    >
-                      ×
-                    </button>
+                    ></button>
                   </div>
                 )}
               </Draggable>

@@ -71,16 +71,3 @@ body {
     padding: 0;
   }
 }
-
-.delete-btn {
-  margin-left: auto;
-  background: none;
-  border: none;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-
-  @include hover {
-    opacity: 1;
-  }
-}

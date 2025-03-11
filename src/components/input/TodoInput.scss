@@ -4,48 +4,25 @@ form {
 
 .input-wrapper {
   width: 100%;
-  height: 100%;
+  border-radius: var(--b-rad);
   position: relative;
   display: flex;
   align-items: center;
+  padding: 1rem;
+  gap: 1rem;
 
-  &::before {
-    display: block;
-    position: absolute;
-    content: "";
-    width: clamp(18px, 3vw, 22px);
-    height: clamp(18px, 3vw, 22px);
+  // Checkbox Styles
+  .faux-checkbox {
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    border: 1px solid var(--border-dark);
-    margin-left: clamp(0.875rem, 2vw, 1.5rem);
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  &::after {
-    position: absolute;
-    content: "";
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient);
-    border-radius: var(--b-rad);
-    transition: width var(--anim), height var(--anim), inset var(--anim);
-  }
-
-  &:focus-within {
-    &::after {
-      inset: -5px;
-      width: calc(100% + 10px);
-      height: calc(100% + 10px);
-    }
+    box-shadow: inset 0 0 0 1px var(--border-dark);
+    flex-shrink: 0;
   }
 }
 
 .todo-input {
-  padding: var(--input-pad);
-  border-radius: var(--b-rad);
+  background: transparent;
   transition: background-color var(--anim), color var(--anim), box-shadow var(--anim);
   width: 100%;
   border: none;
@@ -61,11 +38,12 @@ form {
 // Theme Switch Styles
 // Dark Theme
 [data-theme="dark"] {
-  .todo-input {
+  .input-wrapper {
     background-color: var(--bg-todo-dark);
     color: var(--text-primary-dark);
     box-shadow: var(--shadow-dark);
 
+    .todo-input,
     &::placeholder {
       color: var(--text-secondary-dark);
       transition: color var(--anim);
@@ -81,11 +59,12 @@ form {
 
 // Light Theme
 [data-theme="light"] {
-  .todo-input {
+  .input-wrapper {
     background-color: var(--bg-todo-light);
     color: var(--text-primary-light);
     box-shadow: var(--shadow-light);
 
+    .todo-input,
     &::placeholder {
       color: var(--text-secondary-light);
     }

@@ -21,6 +21,7 @@ export const TodoInput = ({ onSubmit }: TodoInputProps) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-wrapper">
+        <div className="faux-checkbox"></div>
         <input
           type="text"
           className="todo-input"

@@ -1,13 +1,14 @@
 // Colors
 :root {
   --primary-color: #3a7bfd;
-  --gradient: linear-gradient(78deg, rgba(172, 45, 235, 1) 0%, rgba(85, 150, 255, 1) 100%);
+  --gradient: linear-gradient(-58deg, #a42395 10%, #3710bd 120%);
+  --gradient2: linear-gradient(-45deg, #c058f3 0%, #55ddff 80%);
 
   // Light Theme
   --bg-light: #fafafa;
   --bg-todo-light: #ffffff;
   --text-primary-light: #494c6b;
-  --text-secondary-light: #9495a5;
+  --text-secondary-light: #393a4b;
   --border-light: #e3e4f1;
   --shadow-light: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 
@@ -15,7 +16,7 @@
   --bg-dark: #171823;
   --bg-todo-dark: #25273d;
   --text-primary-dark: #c8cbe7;
-  --text-secondary-dark: #767992;
+  --text-secondary-dark: #c8cbe7;
   --border-dark: #393a4b;
   --shadow-dark: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
 
@@ -25,7 +26,6 @@
   --input-pad-block: clamp(0.875rem, 10vw, 1.25rem);
   --input-pad-right: clamp(1.5rem, 10vw, 1.5rem);
   --input-pad-left: clamp(3.25rem, 7.5vw, 4.5rem);
-  --input-pad: var(--input-pad-block) var(--input-pad-right) var(--input-pad-block) var(--input-pad-left);
 }
 
 // Breakpoints
