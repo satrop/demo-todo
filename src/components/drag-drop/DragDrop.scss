@@ -97,7 +97,7 @@
       display: grid;
       place-items: center;
 
-      @media (width > 768) {
+      @media (min-width: 769px) {
         opacity: 0;
       }
 
