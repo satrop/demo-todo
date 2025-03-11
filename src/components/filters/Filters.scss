@@ -1,55 +1,107 @@
 .filters {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  font-size: 0.875rem;
+  display: grid;
+  row-gap: 1rem;
+  grid-template-areas:
+    "items items clear"
+    "filter-buttons filter-buttons filter-buttons";
+
+  @media (width > 768) {
+    grid-template-areas: "items filter-buttons clear";
+  }
+
+  .items,
+  .clear {
+    width: 100%;
+    padding: 1rem;
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .items {
+    grid-area: items;
+    border-bottom-left-radius: var(--b-rad);
+  }
+
+  .clear {
+    grid-area: clear;
+    justify-self: end;
+    text-align: right;
+    border-bottom-right-radius: var(--b-rad);
+    font-weight: 300;
+  }
+
+  .filter-buttons {
+    grid-area: filter-buttons;
+    display: flex;
+    gap: 1.25rem;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: var(--b-rad);
+
+    @media (width > 768) {
+      border-radius: 0;
+    }
+  }
 
   button {
     background: none;
     border: none;
     cursor: pointer;
-    color: inherit;
+    transition: color var(--anim);
+  }
 
-    &.active {
-      color: var(--primary-color);
+  [data-theme="dark"] &,
+  [data-theme="light"] & {
+    .filter-buttons button {
+      &:hover {
+        color: var(--border-light);
+      }
+
+      &.active {
+        color: var(--primary-color);
+      }
     }
-
-    // @include hover {
-    //   color: var(--primary-color);
-    // }
   }
 }
 
-.filters {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--todo-bg);
-  border-radius: 0 0 5px 5px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-
-  button {
-    background: none;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: var(--text-primary);
+// Theme Switch Styles
+// Dark Theme
+[data-theme="dark"] {
+  .filters {
+    .items,
+    .clear {
+      background-color: var(--bg-todo-dark);
     }
 
-    // &.active {
-    //   // color: $primary-color;
-    // }
-  }
+    .clear {
+      color: var(--text-secondary-dark);
+    }
 
-  div {
-    display: flex;
-    gap: 0.5rem;
+    .filter-buttons {
+      background-color: var(--bg-todo-dark);
+    }
+    button {
+      color: var(--text-secondary-dark);
+    }
+  }
+}
+
+// Light Theme
+[data-theme="light"] {
+  .filters {
+    .items,
+    .clear {
+      background-color: var(--bg-todo-light);
+    }
+
+    .clear {
+      color: var(--text-secondary-light);
+    }
+
+    .filter-buttons {
+      background-color: var(--bg-todo-light);
+    }
+    button {
+      color: var(--text-secondary-light);
+    }
   }
 }

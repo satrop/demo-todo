@@ -1,5 +1,7 @@
 .todo-list {
   border-radius: var(--b-rad);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   overflow: hidden;
 
   .todo-item {
@@ -7,10 +9,6 @@
     align-items: center;
     padding: 1rem;
     gap: 1rem;
-
-    &:last-child {
-      border-bottom: none;
-    }
 
     span {
       position: relative;

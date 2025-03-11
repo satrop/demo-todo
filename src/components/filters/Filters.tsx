@@ -11,8 +11,8 @@ interface FiltersProps {
 export const Filters = ({ activeCount, currentFilter, onFilterChange, onClearCompleted }: FiltersProps) => {
   return (
     <div className="filters">
-      <span>{activeCount} items left</span>
-      <div>
+      <span className="items">{activeCount} items left</span>
+      <div className="filter-buttons">
         {(["all", "active", "completed"] as FilterType[]).map((filterType) => (
           <button
             key={filterType}
@@ -23,7 +23,12 @@ export const Filters = ({ activeCount, currentFilter, onFilterChange, onClearCom
           </button>
         ))}
       </div>
-      <button onClick={onClearCompleted}>Clear Completed</button>
+      <button
+        className="clear"
+        onClick={onClearCompleted}
+      >
+        Clear Completed
+      </button>
     </div>
   );
 };
