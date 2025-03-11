@@ -22,6 +22,7 @@
 
   .items,
   .clear {
+    font-family: "Josefin Sans", sans-serif;
     width: 100%;
     padding: 1.5rem;
     font-size: clamp(0.75rem, 2vw, 0.875rem);
@@ -50,6 +51,7 @@
     border-radius: var(--b-rad);
 
     button {
+      font-family: "Josefin Sans", sans-serif;
       font-weight: 600;
     }
 
