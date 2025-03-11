@@ -5,7 +5,7 @@
     "items items clear"
     "filter-buttons filter-buttons filter-buttons";
 
-  @media (width > 768) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "items filter-buttons clear";
   }
@@ -22,9 +22,9 @@
 
   .items,
   .clear {
-    font-family: "Josefin Sans", sans-serif;
     width: 100%;
     padding: 1.5rem;
+    font-family: "Josefin Sans", sans-serif;
     font-size: clamp(0.75rem, 2vw, 0.875rem);
     transition: color var(--anim);
   }
@@ -55,7 +55,7 @@
       font-weight: 600;
     }
 
-    @media (width > 768) {
+    @media screen and (min-width: 768px) {
       border-radius: 0;
     }
   }

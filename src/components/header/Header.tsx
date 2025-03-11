@@ -1,4 +1,5 @@
 import { useTodo } from "@/context/TodoContext";
+import Image from "next/image";
 import "./Header.scss";
 
 export function Header() {
@@ -12,9 +13,11 @@ export function Header() {
         onClick={toggleTheme}
         aria-label="Toggle theme"
       >
-        <img
+        <Image
           src={theme === "light" ? "/images/moon.svg" : "/images/sun.svg"}
           alt={theme === "light" ? "Dark mode" : "Light mode"}
+          width={24}
+          height={24}
         />
       </button>
     </header>
