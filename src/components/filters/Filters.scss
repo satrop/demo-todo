@@ -6,14 +6,26 @@
     "filter-buttons filter-buttons filter-buttons";
 
   @media (width > 768) {
+    grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "items filter-buttons clear";
+  }
+
+  &:not(.has-todos) {
+    .items {
+      border-top-left-radius: var(--b-rad);
+    }
+
+    .clear {
+      border-top-right-radius: var(--b-rad);
+    }
   }
 
   .items,
   .clear {
     width: 100%;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: clamp(0.75rem, 2vw, 0.875rem);
+    transition: color var(--anim);
   }
 
   .items {
@@ -37,6 +49,10 @@
     padding: 1rem;
     border-radius: var(--b-rad);
 
+    button {
+      font-weight: 600;
+    }
+
     @media (width > 768) {
       border-radius: 0;
     }
@@ -52,14 +68,19 @@
   [data-theme="dark"] &,
   [data-theme="light"] & {
     .filter-buttons button {
-      &:hover {
-        color: var(--border-light);
-      }
-
       &.active {
         color: var(--primary-color);
       }
     }
+  }
+
+  .items {
+    transition: background-color var(--anim);
+  }
+
+  .clear,
+  .filter-buttons {
+    transition: background-color var(--anim), color var(--anim);
   }
 }
 
@@ -72,6 +93,7 @@
       background-color: var(--bg-todo-dark);
     }
 
+    .items,
     .clear {
       color: var(--text-secondary-dark);
     }
@@ -79,8 +101,13 @@
     .filter-buttons {
       background-color: var(--bg-todo-dark);
     }
+
     button {
       color: var(--text-secondary-dark);
+
+      &:hover {
+        color: var(--border-light);
+      }
     }
   }
 }
@@ -93,6 +120,7 @@
       background-color: var(--bg-todo-light);
     }
 
+    .items,
     .clear {
       color: var(--text-secondary-light);
     }
@@ -100,8 +128,13 @@
     .filter-buttons {
       background-color: var(--bg-todo-light);
     }
+
     button {
       color: var(--text-secondary-light);
+
+      &:hover {
+        color: var(--text-todo-light);
+      }
     }
   }
 }

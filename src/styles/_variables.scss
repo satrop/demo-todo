@@ -7,8 +7,10 @@
   // Light Theme
   --bg-light: #fafafa;
   --bg-todo-light: #ffffff;
-  --text-primary-light: #494c6b;
+  --text-primary-light: #393a4b;
   --text-secondary-light: #9495a5;
+  --text-todo-light: #494c6b;
+  --text-todo-light-checked: #d1d2da;
   --border-light: #e3e4f1;
   --shadow-light: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 
@@ -17,15 +19,17 @@
   --bg-todo-dark: #25273d;
   --text-primary-dark: #c8cbe7;
   --text-secondary-dark: #5b5e7e;
+  --text-todo-dark: #c8cbe7;
+  --text-todo-dark-checked: #4d5067;
   --border-dark: #393a4b;
   --shadow-dark: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
 
   // Utilities
   --b-rad: 5px;
   --anim: 0.3s ease-in-out;
-  --input-pad-block: clamp(0.875rem, 10vw, 1.25rem);
-  --input-pad-right: clamp(1.5rem, 10vw, 1.5rem);
-  --input-pad-left: clamp(3.25rem, 7.5vw, 4.5rem);
+  --pad: clamp(0.75rem, 5vw, 1.25rem) clamp(1.25rem, 5vw, 1.5rem);
+  --gap: clamp(0.75rem, 4vw, 1.5rem);
+  --font: clamp(0.75rem, 3vw, 1.125rem);
 }
 
 // Breakpoints

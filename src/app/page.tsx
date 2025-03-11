@@ -33,11 +33,13 @@ export default function Home() {
         onDelete={deleteTodo}
       />
       <Filters
+        className={todos.length > 0 ? "has-todos" : ""}
         activeCount={activeTodosCount}
         currentFilter={filter}
         onFilterChange={setFilter}
         onClearCompleted={clearCompleted}
       />
+      <p className="notice">Drag and drop to reorder list</p>
     </main>
   );
 }

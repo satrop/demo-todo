@@ -46,19 +46,25 @@ body {
 
 [data-theme="light"] {
   background-color: var(--bg-light);
-  color: var(--text-primary-light);
 
   body::after {
     background-image: url("/images/background-light.png");
+  }
+
+  .notice {
+    color: var(--text-secondary-light);
   }
 }
 
 [data-theme="dark"] {
   background-color: var(--bg-dark);
-  color: var(--text-primary-dark);
 
   body::after {
     background-image: url("/images/background-dark.png");
+  }
+
+  .notice {
+    color: var(--text-secondary-dark);
   }
 }
 
@@ -70,4 +76,11 @@ body {
   @media (min-width: 768px) {
     padding: 0;
   }
+}
+
+.notice {
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 50px;
+  transition: color var(--anim);
 }

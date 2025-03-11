@@ -2,15 +2,16 @@ import { FilterType } from "@/types/todo";
 import "./Filters.scss";
 
 interface FiltersProps {
+  className?: string;
   activeCount: number;
   currentFilter: FilterType;
   onFilterChange: (filter: FilterType) => void;
   onClearCompleted: () => void;
 }
 
-export const Filters = ({ activeCount, currentFilter, onFilterChange, onClearCompleted }: FiltersProps) => {
+export const Filters: React.FC<FiltersProps> = ({ className = "", activeCount, currentFilter, onFilterChange, onClearCompleted }) => {
   return (
-    <div className="filters">
+    <div className={`filters ${className}`}>
       <span className="items">{activeCount} items left</span>
       <div className="filter-buttons">
         {(["all", "active", "completed"] as FilterType[]).map((filterType) => (

@@ -1,23 +1,31 @@
 form {
-  margin-bottom: 2rem;
+  margin-bottom: clamp(0.938rem, 5vw, 1.5rem);
 }
 
 .input-wrapper {
   width: 100%;
   border-radius: var(--b-rad);
-  position: relative;
+  // position: relative;
   display: flex;
   align-items: center;
-  padding: 1rem;
-  gap: 1rem;
+  font-size: var(--font);
+  padding: var(--pad);
+  gap: var(--gap);
+  transition: background-color var(--anim), color var(--anim), box-shadow var(--anim);
 
   // Checkbox Styles
   .faux-checkbox {
-    width: 24px;
-    height: 24px;
+    --size: 20px;
+
+    width: var(--size);
+    height: var(--size);
     border-radius: 50%;
     box-shadow: inset 0 0 0 1px var(--border-dark);
     flex-shrink: 0;
+
+    @media (width > 768) {
+      --size: 24px;
+    }
   }
 }
 

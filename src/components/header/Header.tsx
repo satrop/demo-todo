@@ -12,7 +12,10 @@ export function Header() {
         onClick={toggleTheme}
         aria-label="Toggle theme"
       >
-        {theme === "light" ? "🌙" : "☀️"}
+        <img
+          src={theme === "light" ? "/images/moon.svg" : "/images/sun.svg"}
+          alt={theme === "light" ? "Dark mode" : "Light mode"}
+        />
       </button>
     </header>
   );
