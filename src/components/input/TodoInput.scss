@@ -19,8 +19,8 @@ form {
     width: var(--size);
     height: var(--size);
     border-radius: 50%;
-    box-shadow: inset 0 0 0 1px var(--border-dark);
     flex-shrink: 0;
+    transition: box-shadow var(--anim);
 
     @media (width > 768) {
       --size: 24px;
@@ -50,6 +50,10 @@ form {
     color: var(--text-primary-dark);
     box-shadow: var(--shadow-dark);
 
+    .faux-checkbox {
+      box-shadow: inset 0 0 0 1px var(--border-dark);
+    }
+
     .todo-input,
     &::placeholder {
       color: var(--text-secondary-dark);
@@ -70,6 +74,10 @@ form {
     background-color: var(--bg-todo-light);
     color: var(--text-primary-light);
     box-shadow: var(--shadow-light);
+
+    .faux-checkbox {
+      box-shadow: inset 0 0 0 1px var(--border-light);
+    }
 
     .todo-input,
     &::placeholder {
