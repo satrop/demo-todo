@@ -140,6 +140,7 @@
     span {
       position: relative;
       max-width: fit-content;
+      cursor: pointer;
 
       &::after {
         background: var(--text-primary-dark);

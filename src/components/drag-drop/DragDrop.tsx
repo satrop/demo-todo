@@ -38,7 +38,7 @@ export const DragDrop = ({ todos, onDragEnd, onToggle, onDelete }: DragDropProps
                     >
                       <div className="checkmark"></div>
                     </div>
-                    <span>{todo.text}</span>
+                    <span onClick={() => onToggle(todo.id)}>{todo.text}</span>
                     <button
                       className="delete-btn"
                       onClick={() => onDelete(todo.id)}
