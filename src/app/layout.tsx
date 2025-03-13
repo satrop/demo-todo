@@ -11,11 +11,11 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: "The classic todo app with a few twists!",
-  description: "The classic todo app with a few twists!",
+  description: "This app includes a dark/light theme toggle and drag & drop reordering",
   metadataBase: new URL("https://demo-todo-nu.vercel.app/"),
   openGraph: {
     title: "The classic todo app with a few twists!",
-    siteName: "The classic todo app with a few twists!",
+    siteName: "This app includes a dark/light theme toggle and drag & drop reordering",
     type: "website",
     url: "https://demo-todo-nu.vercel.app/",
     images: [
