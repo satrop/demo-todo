@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://demo-todo-nu.vercel.app/",
     images: [
       {
-        url: "/og.png",
+        url: "/images/og-img.png",
         width: 1200,
         height: 600,
         alt: "Country flags",
