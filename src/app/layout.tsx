@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "/images/og-img.png",
         width: 1200,
         height: 600,
-        alt: "Country flags",
+        alt: "Todo App",
       },
     ],
   },
